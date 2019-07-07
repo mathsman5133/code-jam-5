@@ -2,8 +2,23 @@ from thoughtful_termites.app import qt
 from thoughtful_termites.shared.constants import get_db
 
 
+COMPLETED_GOALS_PATH = "./resources/completed_goals.txt"
+
+
 class UnlocksWindow(qt.QDialog):
-    completed_goals = 0
+    @staticmethod
+    def inc_completed_goals():
+        goals = UnlocksWindow.completed_goals()
+        goals += 1
+
+        with open(COMPLETED_GOALS_PATH, "w") as f:
+            f.write(str(goals))
+
+    @staticmethod
+    def completed_goals():
+        with open(COMPLETED_GOALS_PATH, "r") as f:
+            contents = f.read().strip()
+            return int(contents)
 
     def __init__(self, parent: qt.QWidget):
         super().__init__(parent)
@@ -26,13 +41,15 @@ class UnlocksWindow(qt.QDialog):
         self.unlock_minesweeper_button.setText("Minesweeper")
         self.unlock_minesweeper_button.addAction(self.on_unlock("minesweeper"))
 
-        if UnlocksWindow.completed_goals < 1:
+        completed_goals = UnlocksWindow.completed_goals()
+
+        if completed_goals < 1:
             self.unlock_commentary_button.setEnabled(False)
-        if UnlocksWindow.completed_goals < 2:
+        if completed_goals < 2:
             self.unlock_rankings_button.setEnabled(False)
-        if UnlocksWindow.completed_goals < 4:
+        if completed_goals < 4:
             self.unlock_hangman_button.setEnabled(False)
-        if UnlocksWindow.completed_goals < 8:
+        if completed_goals < 8:
             self.unlock_minesweeper_button.setEnabled(False)
 
         self.layout = qt.QGridLayout()
