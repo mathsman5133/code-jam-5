@@ -34,9 +34,9 @@ class UnlocksWindow(qt.QDialog):
         self.unlock_hangman_button.setText("Hangman")
         self.unlock_hangman_button.addAction(self.on_unlock("hangman"))
 
-        self.unlock_minesweeper_button = qt.QPushButton()
-        self.unlock_minesweeper_button.setText("Minesweeper")
-        self.unlock_minesweeper_button.addAction(self.on_unlock("minesweeper"))
+        self.unlock_treefinder_button = qt.QPushButton()
+        self.unlock_treefinder_button.setText("Treefinder")
+        self.unlock_treefinder_button.addAction(self.on_unlock("treefinder"))
 
         completed_goals = UnlocksWindow.completed_goals()
 
@@ -47,7 +47,7 @@ class UnlocksWindow(qt.QDialog):
         if completed_goals < 4:
             self.unlock_hangman_button.setEnabled(False)
         if completed_goals < 8:
-            self.unlock_minesweeper_button.setEnabled(False)
+            self.unlock_treefinder_button.setEnabled(False)
 
         self.layout = qt.QGridLayout()
         self.layout.setRowStretch(0, 2)
@@ -56,13 +56,13 @@ class UnlocksWindow(qt.QDialog):
         self.layout.addWidget(self.unlock_commentary_button, 0, 0)
         self.layout.addWidget(self.unlock_rankings_button, 0, 1)
         self.layout.addWidget(self.unlock_hangman_button, 1, 0)
-        self.layout.addWidget(self.unlock_minesweeper_button, 1, 1)
+        self.layout.addWidget(self.unlock_treefinder_button, 1, 1)
 
         self.main_layout = qt.QVBoxLayout(self)
         self.main_layout.setContentsMargins(0, 0, 0, 0)
         self.main_layout.addChildLayout(self.layout)
 
-        self.setWindowTitle("Unlocking Minigames")
+        self.setWindowTitle("Unlock Minigames")
 
     def on_unlock(self, name):
         def inner():
