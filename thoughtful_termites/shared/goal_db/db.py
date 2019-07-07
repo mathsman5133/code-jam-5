@@ -126,8 +126,6 @@ class GoalDB:
         for reminder in self.get_reminders(order):
             yield reminder
 
-    # SPECIFIC GOALS
-
     def get_goal_by_id(self, id):
         """
         Returns a goal by its ID.
@@ -161,8 +159,6 @@ class GoalDB:
         :param: goal_name: The name of the goal
         :return: Goal with the given name"""
         return await self.loop.run_in_executor(None, partial(self.get_goal_by_name, goal_name))
-
-    # SPECIFIC REMINDERS
 
     def get_reminder_by_id(self, id):
         """
@@ -265,8 +261,6 @@ class GoalDB:
     async def get_next_reminder_async(self):
         """Coroutine helper to get the next reminder."""
         return await self.loop.run_in_executor(None, self.get_next_reminder)
-
-    # UNLOCKS
 
     def get_unlocks(self):
         result = self.connection.execute("SELECT * FROM unlocks")

@@ -6,5 +6,6 @@ from .unlocks import Unlock
 __all__ = [
     'GoalDB',
     'ReminderTime',
-    'Days'
+    'Days',
+    'Unlock'
 ]

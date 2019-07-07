@@ -56,9 +56,7 @@ class Unlock:
 
     def update(self, commit=True):
         """
-        Apply any changes to this goal to the database.
-        This will not apply changes to its reminders.
-        Those must be applied individually per reminder.
+        Apply any changes to this unlock to the database.
 
         :param commit: If true, changes will be committed immediately.
         """
