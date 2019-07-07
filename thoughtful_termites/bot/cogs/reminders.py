@@ -165,7 +165,6 @@ class Reminders(commands.Cog):
         if ctx.invoked_subcommand is not None:
             return
         await ctx.invoke(self.reminders_list, to_get=to_get)
-        # TODO: `>reminder create`, `>reminder delete`
 
     @reminders.command(name='list')
     async def reminders_list(self, ctx, *, to_get: ReminderTimeConverter = None):

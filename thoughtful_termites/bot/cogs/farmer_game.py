@@ -285,18 +285,6 @@ class FarmerTown(commands.Cog):
                           title=f'{current_stats.farmer_name}\'s Current Balance',
                           timestamp=datetime.utcnow()
                           )
-        # e.add_field(name='Cash',
-        #             value=f'${current_stats.cash}',
-        #             inline=False
-        #             )
-        # e.add_field(name='Debt',
-        #             value=f'${current_stats.debt}',
-        #             inline=False
-        #             )
-        # e.add_field(name='Bank Balance',
-        #             value=f'${current_stats.bank}',
-        #             inline=False
-        #             )
         e.add_field(name='Total',
                     value=f'${current_stats.cash}',
                     inline=False)
