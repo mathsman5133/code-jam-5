@@ -5,6 +5,8 @@ from datetime import datetime
 import discord
 from discord.ext import commands
 
+from thoughtful_termites.bot import unlocks
+
 
 class Tile(enum.Enum):
     EMPTY = 0
@@ -138,6 +140,9 @@ class Minesweeper(commands.Cog):
 
     @commands.command()
     async def minesweeper(self, ctx, *, member: discord.Member = None):
+        if not unlocks.has_unlocked(ctx, "minesweeper"):
+            await ctx.send(unlocks.unlock_message("Minesweeper"))
+
         embed = self.minesweeper_embed("Type `guess x y` to guess a tile.")
         message: discord.Message = await ctx.send(embed=embed)
 

@@ -5,6 +5,7 @@ from datetime import datetime
 import discord
 from discord.ext import commands
 
+from thoughtful_termites.bot import unlocks
 
 RANKINGS_DATA_PATH = "./resources/rankings_data.csv"
 
@@ -56,6 +57,9 @@ class Rankings(commands.Cog):
 
     @commands.command()
     async def rankings(self, ctx, *, member: discord.Member = None):
+        if not unlocks.has_unlocked(ctx, "rankings"):
+            await ctx.send(unlocks.unlock_message("Rankings"))
+
         question_type = random.random()
         countries = random.sample(self.raw_rankings, 5)
 

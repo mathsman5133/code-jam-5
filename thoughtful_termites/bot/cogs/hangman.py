@@ -6,6 +6,7 @@ import string
 from datetime import datetime
 from discord.ext import commands
 
+from thoughtful_termites.bot import unlocks
 
 WORDS_PATH = "./resources/hangman_words.txt"
 
@@ -109,6 +110,9 @@ class Hangman(commands.Cog):
 
     @commands.command()
     async def hangman(self, ctx, *, member: discord.Member = None):
+        if not unlocks.has_unlocked(ctx, "hangman"):
+            await ctx.send(unlocks.unlock_message("Hangman"))
+
         embed = self.hangman_embed("Welcome to Hangman! Start the game by reacting to this message.")
         message: discord.Message = await ctx.send(
             embed=embed
