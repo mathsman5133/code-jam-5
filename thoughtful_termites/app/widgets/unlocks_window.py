@@ -7,12 +7,9 @@ COMPLETED_GOALS_PATH = "./resources/completed_goals.txt"
 
 class UnlocksWindow(qt.QDialog):
     @staticmethod
-    def inc_completed_goals():
-        goals = UnlocksWindow.completed_goals()
-        goals += 1
-
+    def set_completed_goals(n: int):
         with open(COMPLETED_GOALS_PATH, "w") as f:
-            f.write(str(goals))
+            f.write(str(n))
 
     @staticmethod
     def completed_goals():
