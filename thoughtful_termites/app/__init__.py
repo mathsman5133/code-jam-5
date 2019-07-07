@@ -4,12 +4,12 @@ def run():
     """
     import sys
     from thoughtful_termites.app import qt
-    from thoughtful_termites.app.widgets import UnlocksWindow
+    from thoughtful_termites.app.widgets import GoalListWindow
 
     app = qt.QApplication(sys.argv)
     sys.excepthook = sys.__excepthook__
 
-    window = UnlocksWindow()
+    window = GoalListWindow()
     window.show()
 
     return app.exec()
