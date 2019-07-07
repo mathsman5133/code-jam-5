@@ -122,7 +122,8 @@ class Reminders(commands.Cog):
         now = datetime.datetime.now()
 
         fmt = f"Reminder: Your Goal is Complete!\n{goal.desc}"
-        time = datetime.datetime(year=now.year, month=now.month, day=reminder.day, hour=reminder.time)
+        time = datetime.datetime(year=now.year, month=now.month,
+                                 day=reminder.day, hour=reminder.time)
 
         e = discord.Embed(colour=self.bot.colour,
                           title=goal.name,
@@ -190,7 +191,8 @@ class Reminders(commands.Cog):
         if not to_get:
             to_get = list(self.bot.db.get_reminders())
 
-        fmt = '\n'.join(f'• {i}. {n.goal.name} -- {str(n.day)} {str(n.time)}' for i, n in enumerate(to_get))
+        fmt = '\n'.join(f'• {i}. {n.goal.name} -- {str(n.day)} '
+                        f'{str(n.time)}' for i, n in enumerate(to_get))
         e = discord.Embed(colour=self.bot.colour,
                           title='Reminders',
                           description=fmt,

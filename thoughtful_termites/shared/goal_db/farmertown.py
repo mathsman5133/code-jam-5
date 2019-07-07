@@ -113,7 +113,7 @@ class FarmerTownMain:
 
         def execute():
             to_add = last_decision.profit - last_decision.loss + self.cash
-            q = self.db.connection.execute("UPDATE farmertown SET cash=? WHERE user_id=?",
+            self.db.connection.execute("UPDATE farmertown SET cash=? WHERE user_id=?",
                                        (to_add, self.user_id))
             self.db.connection.commit()
 
@@ -159,4 +159,3 @@ class FarmerTownDecision:
         """Returns a datetime timestamp of when the decision was made."""
         raw = self.result['used']
         return datetime.datetime.fromtimestamp(raw)
-

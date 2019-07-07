@@ -149,8 +149,8 @@ if __name__ == '__main__':
             outbox=queue_2
         )
 
-        process_2 = ExampleProcess2Sync(
         # process_2 = ExampleProcess2Async(
+        process_2 = ExampleProcess2Sync(
             inbox=queue_2,
             outbox=queue_1
         )

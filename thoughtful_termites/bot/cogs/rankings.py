@@ -168,7 +168,8 @@ class Rankings(commands.Cog):
                 correct += 1
 
         if correct == 0:
-            final_message = "Unfortunately, you got none of the ranks correct. Better luck next time!"
+            final_message = "Unfortunately, you got none of the ranks correct. " \
+                            "Better luck next time!"
         elif correct == 5:
             final_message = "Congratulations! You got all of the ranks correct."
         else:

@@ -45,7 +45,8 @@ class ClimateArguments(commands.Cog):
             argument_id = random.randint(0, len(self.raw_climate_arguments) - 1)
 
         if not 0 < argument_id < len(self.raw_climate_arguments):
-            raise commands.BadArgument(f'Argument ID must be between 0 and {len(self.raw_climate_arguments)}')
+            raise commands.BadArgument(f'Argument ID must be between 0 and '
+                                       f'{len(self.raw_climate_arguments)}')
 
         choice = self.raw_climate_arguments[argument_id]
         embed = discord.Embed(colour=self.bot.colour,

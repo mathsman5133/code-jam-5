@@ -1,7 +1,6 @@
 from pathlib import Path
 from thoughtful_termites.shared.goal_db import GoalDB
 from thoughtful_termites.shared.goal_db import Days
-from thoughtful_termites.shared.goal_db import ReminderTime
 
 cd = Path(__file__).parent
 db_path: Path = cd / 'goals.db'

@@ -11,7 +11,7 @@ from .reminder import Reminder
 from .reminder_day import ReminderDay
 from .reminder_time import ReminderTime
 from .unlocks import Unlock
-from .farmertown import FarmerTownMain, FarmerTownDecision
+from .farmertown import FarmerTownMain
 
 cd = Path(__file__).parent
 creation_script_path = cd / 'create_goal_db.sqlite'
@@ -192,7 +192,8 @@ class GoalDB:
         :return: Reminder with the given goal name.
         """
         result = self.connection.execute('SELECT * FROM reminders INNER JOIN goals '
-                                         'ON goals.id = reminders.goal_id WHERE goals.name=?', (goal_name,))
+                                         'ON goals.id = reminders.goal_id WHERE goals.name=?',
+                                         (goal_name,))
         for row in result:
             return Reminder.from_row(self, row)
 
@@ -202,7 +203,9 @@ class GoalDB:
         :param: goal_name: the goal name of the reminder.
         :return: Reminder with the given goal name.
         """
-        return await self.loop.run_in_executor(None, partial(self.get_reminder_by_goal_name, goal_name))
+        return await self.loop.run_in_executor(None, partial(self.get_reminder_by_goal_name,
+                                                             goal_name)
+                                               )
 
     def get_reminder_by_goal_id(self, goal_id):
         """Get a reminder with given goal ID
@@ -254,7 +257,8 @@ class GoalDB:
         now = datetime.datetime.now()
         now_int = int(ReminderTime.from_timestamp(now.strftime('%H:%M')))
 
-        result = self.connection.execute("SELECT * FROM reminders WHERE day>=? AND time>=? ORDER BY day, time LIMIT 1;",
+        result = self.connection.execute("SELECT * FROM reminders WHERE day>=? AND time>=? "
+                                         "ORDER BY day, time LIMIT 1;",
                                          (now.isoweekday(), now_int)
                                          )
         for row in result:
@@ -304,4 +308,3 @@ class GoalDB:
         result = await self.loop.run_in_executor(None, fetch)
         for row in result:
             return FarmerTownMain(self, row)
-
