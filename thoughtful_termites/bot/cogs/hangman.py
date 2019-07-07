@@ -155,6 +155,7 @@ class Hangman(commands.Cog):
         """
         if not unlocks.has_unlocked(ctx, "hangman"):
             await ctx.send(unlocks.unlock_message("Hangman"))
+            return
 
         embed = self.hangman_embed("Welcome to Hangman! Start the game by reacting to this message.")
         message: discord.Message = await ctx.send(

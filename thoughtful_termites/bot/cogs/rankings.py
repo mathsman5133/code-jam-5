@@ -94,6 +94,7 @@ class Rankings(commands.Cog):
         """
         if not unlocks.has_unlocked(ctx, "rankings"):
             await ctx.send(unlocks.unlock_message("Rankings"))
+            return
 
         question_type = random.random()
         countries = random.sample(self.raw_rankings, 5)

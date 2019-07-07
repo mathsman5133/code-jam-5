@@ -25,6 +25,7 @@ create table unlocks(
     is_unlocked integer
 );
 
+insert into unlocks (name, is_unlocked) values ("commentary", 0);
 insert into unlocks (name, is_unlocked) values ("hangman", 0);
 insert into unlocks (name, is_unlocked) values ("minesweeper", 0);
 insert into unlocks (name, is_unlocked) values ("rankings", 0);

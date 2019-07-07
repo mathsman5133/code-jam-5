@@ -227,6 +227,7 @@ class Minesweeper(commands.Cog):
         """
         if not unlocks.has_unlocked(ctx, "minesweeper"):
             await ctx.send(unlocks.unlock_message("Minesweeper"))
+            return
 
         embed = self.minesweeper_embed("Type `guess x y` to guess a tile.")
         message: discord.Message = await ctx.send(embed=embed)

@@ -8,4 +8,3 @@ def has_unlocked(ctx: ClimateBot, name):
 
 def unlock_message(name):
     return f"You have not unlocked the game {name} yet, please try again later."
-
